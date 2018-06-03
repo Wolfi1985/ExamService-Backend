@@ -8,6 +8,7 @@ io\swagger\api\GetAllExamsApiController.class
 io\swagger\configuration\CustomInstantDeserializer$10.class
 io\swagger\configuration\HomeController.class
 io\swagger\api\UserApiController.class
+io\swagger\repository\UserRepository.class
 io\swagger\configuration\CustomInstantDeserializer$8.class
 io\swagger\api\ExamApiController.class
 io\swagger\configuration\CustomInstantDeserializer$4.class

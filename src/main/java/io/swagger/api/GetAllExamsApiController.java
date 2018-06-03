@@ -1,6 +1,9 @@
 package io.swagger.api;
 
 import io.swagger.model.Exams;
+import io.swagger.repository.ExamRepository;
+import io.swagger.repository.UserRepository;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -30,18 +33,22 @@ public class GetAllExamsApiController implements GetAllExamsApi {
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
+    
+    private ExamRepository examRepository;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public GetAllExamsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public GetAllExamsApiController(ObjectMapper objectMapper, HttpServletRequest request,  ExamRepository examRepository) {
         this.objectMapper = objectMapper;
         this.request = request;
+        this.examRepository = examRepository;
     }
 
-    /** @Robert: add new exam to DB and change Http.Status in ResponseEntity where NOT_IMPLEMENTED to HttpStatus.OK*/
+    /** @Robert: return all Exams from DB and change Http.Status in ResponseEntity where NOT_IMPLEMENTED to HttpStatus.OK*/
     public ResponseEntity<Exams> getAllExams() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
+            	log.info(examRepository.findAll().toString());
                 return new ResponseEntity<Exams>(objectMapper.readValue("\"\"", Exams.class), HttpStatus.OK);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
