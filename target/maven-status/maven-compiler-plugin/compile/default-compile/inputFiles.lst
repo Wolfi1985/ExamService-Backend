@@ -8,6 +8,7 @@ C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Ba
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\model\Enrollment.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\api\ExamApiController.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\api\ShowEnrollmentsApiController.java
+C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\repository\EnrollmentRepository.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\api\ExamApi.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\repository\UserRepository.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\api\GetAllStudentsExamsApiController.java

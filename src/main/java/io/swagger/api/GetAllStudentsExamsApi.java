@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.Enrollments;
 import io.swagger.model.Exams;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +34,10 @@ public interface GetAllStudentsExamsApi {
         @ApiResponse(code = 200, message = "successful operation", response = Exams.class),
         @ApiResponse(code = 400, message = "Exams couldn't be found"),
         @ApiResponse(code = 404, message = "Exams not found") })
-    @RequestMapping(value = "/getAllStudentsExams",
+    @RequestMapping(value = "/getAllStudentsExams/",
         produces = { "application/json", "application/xml" }, 
         consumes = { "application/json" },
         method = RequestMethod.GET)
-    ResponseEntity<Exams> getAllExamsOfAStudent(@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "mkNumber", required = true) String mkNumber);
+    ResponseEntity<Enrollments> getAllExamsOfAStudent(@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "mkNumber", required = true) String mkNumber);
 
 }

@@ -10,5 +10,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
 	@Query("SELECT u FROM User u where u.userName = :userName")
     User findByUserName(@Param("userName") String userName);
+	
+	@Query("SELECT u FROM User u where u.mkNumber = :mkNumber")
+	User findByMkNumber(@Param("mkNumber") String mkNumber);
 
 }

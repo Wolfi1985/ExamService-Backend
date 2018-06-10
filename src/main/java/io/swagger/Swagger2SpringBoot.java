@@ -1,5 +1,7 @@
 package io.swagger;
 
+import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +16,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.threeten.bp.OffsetDateTime;
 
+import io.swagger.model.Enrollment;
 import io.swagger.model.Exam;
 import io.swagger.model.User;
+import io.swagger.repository.EnrollmentRepository;
 import io.swagger.repository.ExamRepository;
 import io.swagger.repository.UserRepository;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -48,7 +52,7 @@ public class Swagger2SpringBoot implements CommandLineRunner {
 
     }
     @Bean
-	public CommandLineRunner demo(UserRepository userRepo, ExamRepository examRepo) {
+	public CommandLineRunner demo(UserRepository userRepo, ExamRepository examRepo, EnrollmentRepository enrollmentRepo) {
 		return (args) -> {
 			// save a couple of customers
 			userRepo.save(new User("Wolfgang", "Heindl", "Wolfi", "1234", "K0123456", false, true));
@@ -93,8 +97,16 @@ public class Swagger2SpringBoot implements CommandLineRunner {
 			log.info(testExam.toString());
 			testExam = examRepo.findByExamId("258200");
 			log.info("");
+
+			enrollmentRepo.save(new Enrollment("259028", "Service Engineering", "Vorlesung", "VL", "SS 2018", 35, 0, 
+					"Die Studierenden verstehen die organisatorischen Modelle und Prozesse elektronischer und webbasierter Dienste (Services) im betrieblichen Umfeld.", 
+					OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), new ArrayList<User>()));
 			
+			enrollmentRepo.save(new Enrollment("259999", "Data Mining", "Vorlesung", "VL", "SS 2018", 39, 0, 
+					"Die Studierenden lernen Data Mining", 
+					OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), new ArrayList<User>()));
 			
+			log.info(enrollmentRepo.findAll().toString());
 			
 		};
 	}

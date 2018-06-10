@@ -6,6 +6,8 @@
 package io.swagger.api;
 
 import io.swagger.annotations.*;
+import io.swagger.model.Enrollments;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,6 +37,6 @@ public interface SubscribeApi {
         produces = { "application/json", "application/xml" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> subscribe(@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "mkNumber", required = true) String mkNumber,@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "examId", required = true) String examId);
+    ResponseEntity<Enrollments> subscribe(@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "mkNumber", required = true) String mkNumber,@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "examId", required = true) String examId);
 
 }

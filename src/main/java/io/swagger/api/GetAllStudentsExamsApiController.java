@@ -1,6 +1,12 @@
 package io.swagger.api;
 
+import io.swagger.model.Enrollment;
+import io.swagger.model.Enrollments;
+import io.swagger.model.Exam;
 import io.swagger.model.Exams;
+import io.swagger.repository.EnrollmentRepository;
+import jdk.internal.jline.internal.Log;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -30,34 +36,44 @@ public class GetAllStudentsExamsApiController implements GetAllStudentsExamsApi 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
+    private EnrollmentRepository enrollmentRepository;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public GetAllStudentsExamsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public GetAllStudentsExamsApiController(ObjectMapper objectMapper, HttpServletRequest request, EnrollmentRepository enrollmentRepository) {
         this.objectMapper = objectMapper;
         this.request = request;
+        this.enrollmentRepository = enrollmentRepository;
     }
 
-    public ResponseEntity<Exams> getAllExamsOfAStudent(@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "mkNumber", required = true) String mkNumber) {
+    public ResponseEntity<Enrollments> getAllExamsOfAStudent(@NotNull @ApiParam(value = "The user mkNumber", required = true) @Valid @RequestParam(value = "mkNumber", required = true) String mkNumber) {
         String accept = request.getHeader("Accept");
+        log.info(mkNumber);
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<Exams>(objectMapper.readValue("\"\"", Exams.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
+            	Iterable<Enrollment> en = enrollmentRepository.findAll();
+            	Enrollments enrollments = new Enrollments();
+            	
+            	en.forEach(e -> enrollments.add(e));
+            	
+            	log.info(enrollments.toString());
+                       	
+                return new ResponseEntity<Enrollments>(enrollments,HttpStatus.OK);
+            } catch (Exception e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<Exams>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<Enrollments>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        if (accept != null && accept.contains("application/xml")) {
+        /*if (accept != null && accept.contains("application/xml")) {
             try {
-                return new ResponseEntity<Exams>(objectMapper.readValue("null", Exams.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<Enrollments>(objectMapper.readValue("null", Exams.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/xml", e);
-                return new ResponseEntity<Exams>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<Enrollments>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        }
+        }*/
 
-        return new ResponseEntity<Exams>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Enrollments>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }
