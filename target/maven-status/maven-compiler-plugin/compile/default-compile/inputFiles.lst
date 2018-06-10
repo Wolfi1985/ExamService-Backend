@@ -25,6 +25,7 @@ C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Ba
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\api\UserApiController.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\model\Enrollments.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\configuration\JacksonConfiguration.java
+C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\repository\ExamRepository.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\api\ApiOriginFilter.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\model\User.java
 C:\Users\wolfg\Documents\UNI Master\2018 03 20 ServiceEngineering\ExamService-Backend\exam-spring\src\main\java\io\swagger\configuration\SwaggerDocumentationConfig.java

@@ -2,6 +2,8 @@ package io.swagger.api;
 
 import javax.xml.bind.annotation.XmlTransient;
 
+import jdk.internal.jline.internal.Log;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-01T16:56:33.976Z")
 
 @javax.xml.bind.annotation.XmlRootElement

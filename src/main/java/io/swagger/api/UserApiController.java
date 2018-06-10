@@ -45,7 +45,6 @@ public class UserApiController implements UserApi {
 		this.userRepository = userRepository;
 	}
 
-	/** @Robert: check if User exists in DB and return user data */
 	public ResponseEntity<User> loginUser(
 			@NotNull @ApiParam(value = "The user name for login", required = true) @Valid @RequestParam(value = "username", required = true) String username,
 			@NotNull @ApiParam(value = "The password for login in clear text", required = true) @Valid @RequestParam(value = "password", required = true) String password) {
@@ -65,7 +64,8 @@ public class UserApiController implements UserApi {
 				return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (NullPointerException e) {
-			 e.printStackTrace();
+			 // e.printStackTrace();
+			 log.info("User not found");
 			 return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 		}
 	}

@@ -1,8 +1,10 @@
 package io.swagger.api;
 
+import io.swagger.model.Exam;
 import io.swagger.model.Exams;
 import io.swagger.repository.ExamRepository;
 import io.swagger.repository.UserRepository;
+import jdk.internal.jline.internal.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
@@ -48,9 +50,16 @@ public class GetAllExamsApiController implements GetAllExamsApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-            	log.info(examRepository.findAll().toString());
-                return new ResponseEntity<Exams>(objectMapper.readValue("\"\"", Exams.class), HttpStatus.OK);
-            } catch (IOException e) {
+
+            	Iterable<Exam> ex = examRepository.findAll();
+            	Exams exams = new Exams();
+            	
+            	ex.forEach(e -> exams.add(e));
+            	
+            	log.info(exams.toString());
+            	
+                return new ResponseEntity<Exams>(exams,HttpStatus.OK);
+            } catch (Exception e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<Exams>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -58,8 +67,16 @@ public class GetAllExamsApiController implements GetAllExamsApi {
 
         if (accept != null && accept.contains("application/xml")) {
             try {
-                return new ResponseEntity<Exams>(objectMapper.readValue("null", Exams.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
+
+            	Iterable<Exam> ex = examRepository.findAll();
+            	Exams exams = new Exams();
+            	
+            	ex.forEach(e -> exams.add(e));
+            	
+            	log.info(exams.toString());
+            	
+                return new ResponseEntity<Exams>(exams,HttpStatus.OK);
+            } catch (Exception e) {
                 log.error("Couldn't serialize response for content type application/xml", e);
                 return new ResponseEntity<Exams>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

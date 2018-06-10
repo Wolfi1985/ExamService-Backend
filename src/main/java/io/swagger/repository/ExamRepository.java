@@ -11,4 +11,5 @@ public interface ExamRepository extends CrudRepository<Exam, Long> {
 
 	@Query("SELECT e FROM Exam e where e.examId = :examId")
     Exam findByExamId(@Param("examId") String examId);
+
 }

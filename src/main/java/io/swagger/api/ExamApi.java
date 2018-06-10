@@ -6,6 +6,7 @@
 package io.swagger.api;
 
 import io.swagger.model.Exam;
+import io.swagger.model.Exams;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -27,7 +28,7 @@ import java.util.List;
 @Api(value = "exam", description = "the exam API")
 public interface ExamApi {
 
-	@CrossOrigin(origins = "*")
+	@CrossOrigin(maxAge = 3600)
     @ApiOperation(value = "Add exam", nickname = "addExam", notes = "This can only be done by the logged in professor.", tags={ "exam", })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid exam supplied"),
@@ -36,23 +37,21 @@ public interface ExamApi {
         produces = { "application/json", "application/xml" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<Void> addExam(@ApiParam(value = "Add exam object" ,required=true )  @Valid @RequestBody Exam body);
+    ResponseEntity<Exams> addExam(@ApiParam(value = "Add exam object" ,required=true )  @Valid @RequestBody Exam body);
 
-
-	@CrossOrigin(origins = "*")
+	@CrossOrigin(maxAge = 3600)
     @ApiOperation(value = "Delete exam", nickname = "deleteExam", notes = "This can only be done by the logged in professor.", tags={ "exam", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Exam successfully deleted"),
         @ApiResponse(code = 400, message = "Invalid examId supplied"),
         @ApiResponse(code = 404, message = "Exam not found") })
-    @RequestMapping(value = "/exam",
+    @RequestMapping(value = "/exam/{examId}",
         produces = { "application/json", "application/xml" }, 
         consumes = { "application/json" },
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteExam(@ApiParam(value = "The exam that needs to be deleted",required=true) @PathVariable("examId") String examId);
+    ResponseEntity<Exams> deleteExam(@ApiParam(value = "The exam that needs to be deleted",required=true) @PathVariable("examId") String examId);
 
-
-	@CrossOrigin(origins = "*")
+	@CrossOrigin(maxAge = 3600)
     @ApiOperation(value = "Updated exam", nickname = "updateExam", notes = "This can only be done by the logged in professor.", tags={ "exam", })
     @ApiResponses(value = { 
         @ApiResponse(code = 400, message = "Invalid exam supplied"),
@@ -61,6 +60,6 @@ public interface ExamApi {
         produces = { "application/json", "application/xml" }, 
         consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<Void> updateExam(@ApiParam(value = "Updated exam object" ,required=true )  @Valid @RequestBody Exam body);
+    ResponseEntity<Exams> updateExam(@ApiParam(value = "Updated exam object" ,required=true )  @Valid @RequestBody Exam body);
 
 }

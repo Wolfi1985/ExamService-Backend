@@ -2,6 +2,7 @@ io\swagger\configuration\CustomInstantDeserializer$FromDecimalArguments.class
 io\swagger\api\GetAllExamsApi.class
 io\swagger\configuration\CustomInstantDeserializer$1.class
 io\swagger\api\ShowEnrollmentsApiController.class
+io\swagger\repository\ExamRepository.class
 io\swagger\api\UnsubscribeApi.class
 io\swagger\model\Students.class
 io\swagger\api\GetAllExamsApiController.class

@@ -13,8 +13,10 @@ public class ApiOriginFilter implements javax.servlet.Filter {
             FilterChain chain) throws IOException, ServletException {
         HttpServletResponse res = (HttpServletResponse) response;
         res.addHeader("Access-Control-Allow-Origin", "*");
-        res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+        res.addHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
         res.addHeader("Access-Control-Allow-Headers", "Content-Type");
+        res.addHeader("Access-Control-Allow-Credentials", "true");
+        System.out.println("---CORS Configuration Completed---");
         chain.doFilter(request, response);
     }
 

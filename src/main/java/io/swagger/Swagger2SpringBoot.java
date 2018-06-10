@@ -72,15 +72,26 @@ public class Swagger2SpringBoot implements CommandLineRunner {
 			
 			
 			
-			examRepo.save(new Exam("259.028", "Service Engineering", "Vorlesung", "VL", "SS 2018", 35, 8, 
+			examRepo.save(new Exam("259028", "Service Engineering", "Vorlesung", "VL", "SS 2018", 35, 8, 
 					"Die Studierenden verstehen die organisatorischen Modelle und Prozesse elektronischer und webbasierter Dienste (Services) im betrieblichen Umfeld.", 
 					OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now()));
+			examRepo.save(new Exam("258450", "Semantische Technologien", "Vorlesung", "VL", "SS 2018", 40, 3, 
+					"Die Lehrinhalte werden in Form einer klassischen Vorlesung, die durch eine Übungsveranstaltung begleitet und ergänzt wird, vermittelt..", 
+					OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now()));
+			examRepo.save(new Exam("258200", "Data & Knowledge Engineering", "Seminar", "SE", "SS 2018", 20, 5, 
+					"Die Studierenden können das in den Basis-, Kern- und Spezialkompetenz vermittelnden Studienfächern erworbene Wissen und die entwickelten Fähigkeiten zur Lösung von praktischen oder wissenschaftlichen Problemstellungen der Wirtschaftsinformatik anwenden. ", 
+					OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now(), OffsetDateTime.now()));
+			
+			
 			
 			// fetch exams by last examId
-			log.info("Customer found with findByLastName('Heindl'):");
+			log.info("Find Test Exams by ExamId:");
 			log.info("--------------------------------------------");
-			Exam testExam = examRepo.findByExamId("259.028");
+			Exam testExam = examRepo.findByExamId("259028");
 			log.info(testExam.toString());
+			testExam = examRepo.findByExamId("258450");
+			log.info(testExam.toString());
+			testExam = examRepo.findByExamId("258200");
 			log.info("");
 			
 			
